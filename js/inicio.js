@@ -15,29 +15,11 @@ class Pelicula
     //
     // }
     this.bueno = new Mago ();
-
     this.bueno.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
 
-    this.malo = new PersonajeBueno (true,'Maria',`amiga de la infancia de ${this.paco.nombre}, una joven llena de energia y unas de las mejores amazonas de su epoca `);
-    this.morgan = new PersonajeMalo (true,'Morgan','es un cojo conocido en su pueblo por sus problemas de alchohol y su ataques impulsivos de ira',3,8,6,'La Morgana');
+    this.malo = new Demonio ();
+    this.malo.hablar(`Tu clase es ${this.malo.nombre} y su descripcion es -> ${this.malo.description}, sus puntos de vida son ${this.malo.vida}`);
 
-
-    document.write(`<div>`);
-    this.primerActo();
-    this.segundoActo();
-    document.write(`<h2> TERCER ACTO: EL FIN </h2>`);
-    this.narrador.hablar(` ${this.paco.nombre} y ${this.maria.nombre} llegaron al sitio donde se encontraba el oro, era una montaña la cual tenia bastantes menas de oro.`);
-    this.paco.hablar(`¿Tu tambien escuchaste ruido detras de nosotros...?`);
-    if (this.paco.azarNumero(2,1) == 1)
-    {
-      this.tercerActoBueno();
-    }
-    else
-    {
-      this.tercerActoMalo();
-    }
-    document.write(`<h3> FIN </h3>`);
-    document.write(`</div>`);
 
   }
 
@@ -162,12 +144,12 @@ class Caballero extends Personaje
     {
       super();
       this.nombre= 'CABALLERO';
-      this.description =  darDescription();
+      this.description =  this.darDescription();
     }
 
     darDescription()
     {
-      descripcionClase=
+      this.descripcionClase=
       [
         'joven caballero en busca de lograr fama',
         'experimentado caballero el cual peleo ya con varias bestias',
@@ -189,12 +171,12 @@ class Cazador extends Personaje
     {
       super();
       this.nombre= 'CAZADOR';
-      this.description = darDescription();
+      this.description = this.darDescription();
     }
 
     darDescription()
     {
-      descripcionClase=
+      this.descripcionClase=
       [
         'joven cazador que ayuda a su pueblo',
         'experimentado cazador con varias piezas de caza memorables',
@@ -244,12 +226,12 @@ class Orco extends Personaje
     {
       super();
       this.nombre= 'ORCO';
-      this.description =  darDescription();
+      this.description =  this.darDescription();
     }
 
     darDescription()
     {
-      descripcionClase=
+      this.descripcionClase=
       [
         'joven orco en busca de un gran festin',
         'experimentado orco en busca de batalla',
@@ -271,12 +253,12 @@ class Demonio extends Personaje
     {
       super();
       this.nombre= 'DEMONIO';
-      this.description = darDescription();
+      this.description = this.darDescription();
     }
 
     darDescription()
     {
-      descripcionClase=
+      this.descripcionClase=
       [
         'joven demonio en busca de subir de nivel',
         'experimentado demonio en busca de sangre para sus rituales',

@@ -5,31 +5,80 @@ class Pelicula
 {
   constructor()
   {
-    this.titulo = 'Batallita Fantastica' //necesario poner el this, si no se puede confundir con variable
-    this.escenario = new Escenario();
-    this.narrador = new Narrador();
-    this.eleccionBueno = prompt('Buenas jugador, que clase de luchador quiere usted ser (MAGO/CABALLERO/CAZADOR): ');
-    this.eleccionBueno = this.eleccionBueno.replace(" ", "")
+    this.titulo = 'Batallita Fantastica';
+    this.escenario = new Escenario(); //Definimos el escenario
+    this.narrador = new Narrador(); //Creamos al narrador
+    this.bueno(); //instanciamos y verificamos al personaje bueno
+    this.malo();//instanciamos y verificamos al personaje malo
 
-    // if (true) {
-    //
-    // }
-    this.bueno = new Mago ();
-    this.bueno.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
+    this.primerActo();
+  }
 
-    this.malo = new Demonio ();
-    this.malo.hablar(`Tu clase es ${this.malo.nombre} y su descripcion es -> ${this.malo.description}, sus puntos de vida son ${this.malo.vida}`);
+  bueno()
+  {
+    do //Se encarga de alertar al usuario si tiene fallo al entrar los datos
+    {
+      this.eleccionBueno = (prompt('Buenas jugador, que clase de luchador quiere usted ser (MAGO/CABALLERO/CAZADOR): ').replace(/ /g, "")).toUpperCase();//CAMBIAMOS LOS ESPACIOS EN BLANCO Y LO PONEMOS TODO MAYUSCULAS, ASI NO DARA FALLO AL ENTRAR LOS DATOS
+      if (this.eleccionBueno != 'MAGO' && this.eleccionBueno != 'CABALLERO' && this.eleccionBueno != 'CAZADOR') //Si escribes mal, te salta un alerta del fallo
+      {
+        alert('Usted fallo en la entrada de datos');
+      }
+    } while (this.eleccionBueno != 'MAGO' && this.eleccionBueno != 'CABALLERO' && this.eleccionBueno != 'CAZADOR');
 
+    switch (this.eleccionBueno)
+    {
+      case 'MAGO':
+        this.bueno = new Mago();
+        break;
+      case 'CABALLERO':
+        this.bueno = new Caballero();
+        break;
+      case 'CAZADOR':
+        this.bueno = new Cazador();
+        break;
+      default: //Si por algun casual sale de do while con fallo, le mostrara al usuario que tiene un fallo al instanciar el personaje
+        alert('Ha ocurrido un error al instanciar al personaje bueno');
+    }
+  }
 
+  malo()
+  {
+    do
+    {
+      this.eleccionMalo = (prompt('Buenas jugador, que clase de enemigo quiere usted ser (DRAGON/ORCO/DEMONIO): ').replace(/ /g, "")).toUpperCase();//CAMBIAMOS LOS ESPACIOS EN BLANCO Y LO PONEMOS TODO MAYUSCULAS, ASI NO DARA FALLO AL ENTRAR LOS DATOS
+      if (this.eleccionMalo != 'DRAGON' && this.eleccionMalo != 'ORCO' && this.eleccionMalo != 'DEMONIO')
+      {
+        alert('Usted fallo en la entrada de datos');
+      }
+    } while (this.eleccionMalo != 'DRAGON' && this.eleccionMalo != 'ORCO' && this.eleccionMalo != 'DEMONIO');
+    switch (this.eleccionMalo)
+    {
+      case 'DRAGON':
+        this.malo = new Dragon();
+        break;
+      case 'ORCO':
+        this.malo = new Orco();
+        break;
+      case 'DEMONIO':
+        this.malo = new Demonio();
+        break;
+      default:
+        alert('Ha ocurrido un error al instanciar al personaje bueno');
+    }
   }
 
   primerActo()
   {
     document.write(`<h1> ${this.titulo} </h1>`);
-    document.write(`<h2> PRIMER ACTO: LA SORPRESA </h2>`);
+    document.write(`<h2> PRIMER ACTO: EL VIAJE </h2>`);
+    this.escenario.lugar(); //Se selecciona un lugar al azar para la pelea.
+    this.narrador.hablar(`Os contare una pequeña batalla que succedio hace un par de decadas en las ${this.escenario.nombreLugar}, ${this.escenario.tipoDescripcion}...`);
+    this.narrador.hablar(`Primero os hablare de uno de los luchadores de esta batalla, este es un ${this.bueno.description} `);
+    this.narrador.hablar(`Ahora del otro "luchador", este es un ${this.malo.description} `);
 
-    this.escenario.lugar();
-    document.write(`<h2> EL NOMBRE DE ESTE LUGAR ES ${this.escenario.nombreLugar} Y SU DESCRIPCION ES ${this.escenario.tipoDescripcion}</h2>`)
+    this.bueno.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
+
+    this.malo.hablar(`Tu clase es ${this.malo.nombre} y su descripcion es -> ${this.malo.description}, sus puntos de vida son ${this.malo.vida}`);
 
 
     // document.write(`<p> ${this.pueblo.nombre} era un pueblo ${this.pueblo.descripcion}, en el pasado fue un pueblo tranquilo y prospero pero eso cambio tras el paso del Sendero de las Lagrimas</p>`);
@@ -64,18 +113,18 @@ class Escenario
   {
     this.lugar=
     [
-      'Tierra de Mordor',
+      'Tierras de Mordor',
       'Arenas Llameantes',
-      'Cascada Infinita',
-      'Cueva Musgosa'
+      'Cascadas Infinita',
+      'Cuevas Musgosa'
     ];
 
     this.descripcion=
     [
-      'Es un lugar rodeado de arboles muertos y arena negra, donde no se puede ver nada por su densa niebla.',
-      'Es un desierto gigantesco el cual tiene dunas de arena y lava por todas partes.',
-      'Son cascadas y cascadas de agua que caen en un inmenso alcantalido con varios saliente a lo largo de su caida.',
-      'Cueva fria y humeda cuvierta de un muesgo brillante'
+      'un lugar rodeado de arboles muertos y arena negra, donde no se puede ver nada por su densa niebla.',
+      'un desierto gigantesco el cual tiene dunas de arena y lava por todas partes.',
+      'cascadas y cascadas de agua que caen en un inmenso alcantalido con varios saliente a lo largo de su caida.',
+      'una cueva fria y humeda cuvierta de un muesgo brillante'
     ];
 
     this.suerte=Escenario.suerte(3,0);

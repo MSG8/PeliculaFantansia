@@ -75,6 +75,14 @@ class Pelicula
     this.narrador.hablar(`Os contare una pequeña batalla que succedio hace un par de decadas en las ${this.escenario.nombreLugar}, ${this.escenario.tipoDescripcion}...`);
     this.narrador.hablar(`Primero os hablare de uno de los luchadores de esta batalla, este es un ${this.bueno.description} `);
     this.narrador.hablar(`Ahora del otro "luchador", este es un ${this.malo.description} `);
+    this.narrador.hablar(`Por azares del destino el ${this.bueno.nombre} y el ${this.malo.nombre} se habian cruzado en el camino de los objetivos de ambos, y ninguno de los dos estaba dispuesto a marcharse`);
+    this.malo.hablar(`Malditos ${this.bueno.nombre} siempre estais molestando, sois peores que moscas`);
+    this.bueno.hablar(`Asquerosos ${this.malo.nombre}, deberiais mejorar mas vuestra inteligencia y dejaar de quejaros de nuestra clase`);
+    this.malo.hablar(`Como si la opinion de un minusculo ${this.bueno.nombre} me importara, ¡JAJAJA!`);
+    this.narrador.hablar(`Rio el ${this.malo.nombre} de manera grave y resonante`);
+    this.bueno.hablar(`No me asustas ${this.malo.nombre}`);
+
+
 
     this.bueno.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
 

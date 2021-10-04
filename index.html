@@ -13,6 +13,19 @@
 		<link rel="stylesheet" type="text/css" href="estilo2.css"/>
 	</head>
 	<body>
-
+		<section>
+			<form action="recoger.php" method="post"> <!--<form action="recoger2.php" method="get">-->
+				<fieldset>
+					<legend>Datos peleadores</legend>
+					<label  for="nombre">Nombre completo y apellidos del solicitante (tal y como aparecen en el DNI):</label>
+					<select name="bueno" >
+						<option value="" selected="selected" hidden="hidden">--Seleccione una clase--</option>
+						<option value="Margaret Hamilton"  >--Margaret Hamilton--</option>
+						<option value="Lynn Conway"  >--Lynn Conway--</option>
+						<option value="Grace Murray Hopper"  >--Grace Murray Hopper--</option>
+					</select>
+				</fieldset>
+			</form>
+		</section>
 	</body>
 </HTML>

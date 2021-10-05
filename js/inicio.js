@@ -87,10 +87,27 @@ class Pelicula
     {
       this.bueno.eventos(this.malo);
       this.malo.eventos(this.bueno);
+    }
 
-      this.narrador.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
-      this.narrador.hablar(`Tu clase es ${this.malo.nombre} y su descripcion es -> ${this.malo.description}, sus puntos de vida son ${this.malo.vida}`);
-
+    if (this.bueno.vida<= 0 && this.malo.vida > 0)
+    {
+      this.malo.hablar(`JAJAJAJA CLARO QUE IBA A GANAR`);
+      this.narrador.hablar(`Dijo con orgullo el ${this.malo.nombre}`);
+    }
+    else
+    {
+      if (this.bueno.vida> 0 && this.malo.vida <= 0)
+      {
+        this.bueno.hablar(`No pudiste con mi fuerza`);
+        this.narrador.hablar(`Dijo con orgullo el ${this.bueno.nombre}`);
+      }
+      else
+      {
+        if (this.bueno.vida<= 0 && this.malo.vida <= 0)
+        {
+          this.narrador.hablar(`Tristemente.. llenos de ira acabaron ambos con sus vidas`);
+        }
+      }
     }
   }
 

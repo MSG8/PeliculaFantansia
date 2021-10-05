@@ -241,22 +241,24 @@ class Mago extends Personaje
 
     eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
     {
-      console.log(suerteMovimiento);
       if (suerteMovimiento<=5 && suerteMovimiento>=0)
       {
         this.atacar(personaje);
       }
-
-      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      else
       {
-        this.defender();
+        if(suerteMovimiento<=8 && suerteMovimiento>=6)
+        {
+          this.defender();
+        }
+        else
+        {
+          if(suerteMovimiento==9)
+          {
+            this.curar();
+          }
+        }
       }
-
-      if(suerteMovimiento==9)
-      {
-        this.curar();
-      }
-
     }
 }
 
@@ -328,17 +330,20 @@ class Caballero extends Personaje
       {
         this.atacar(personaje);
       }
-
-      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      else
       {
-        this.defender();
+        if(suerteMovimiento<=8 && suerteMovimiento>=6)
+        {
+          this.defender();
+        }
+        else
+        {
+          if(suerteMovimiento==9)
+          {
+            this.curar();
+          }
+        }
       }
-
-      if(suerteMovimiento==9)
-      {
-        this.curar();
-      }
-
     }
 }
 
@@ -409,17 +414,20 @@ class Cazador extends Personaje
       {
         this.atacar(personaje);
       }
-
-      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      else
       {
-        this.defender();
+        if(suerteMovimiento<=8 && suerteMovimiento>=6)
+        {
+          this.defender();
+        }
+        else
+        {
+          if(suerteMovimiento==9)
+          {
+            this.curar();
+          }
+        }
       }
-
-      if(suerteMovimiento==9)
-      {
-        this.curar();
-      }
-
     }
 }
 
@@ -490,17 +498,20 @@ class Dragon extends Personaje
       {
         this.atacar(personaje);
       }
-
-      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      else
       {
-        this.defender();
+        if(suerteMovimiento<=8 && suerteMovimiento>=6)
+        {
+          this.defender();
+        }
+        else
+        {
+          if(suerteMovimiento==9)
+          {
+            this.curar();
+          }
+        }
       }
-
-      if(suerteMovimiento==9)
-      {
-        this.curar();
-      }
-
     }
 }
 
@@ -572,17 +583,20 @@ class Orco extends Personaje
       {
         this.atacar(personaje);
       }
-
-      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      else
       {
-        this.defender();
+        if(suerteMovimiento<=8 && suerteMovimiento>=6)
+        {
+          this.defender();
+        }
+        else
+        {
+          if(suerteMovimiento==9)
+          {
+            this.curar();
+          }
+        }
       }
-
-      if(suerteMovimiento==9)
-      {
-        this.curar();
-      }
-
     }
 }
 
@@ -653,17 +667,20 @@ class Demonio extends Personaje
       {
         this.atacar(personaje);
       }
-
-      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      else
       {
-        this.defender();
+        if(suerteMovimiento<=8 && suerteMovimiento>=6)
+        {
+          this.defender();
+        }
+        else
+        {
+          if(suerteMovimiento==9)
+          {
+            this.curar();
+          }
+        }
       }
-
-      if(suerteMovimiento==9)
-      {
-        this.curar();
-      }
-
     }
 }
 

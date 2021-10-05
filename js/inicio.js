@@ -74,7 +74,9 @@ class Pelicula
     this.escenario.lugar(); //Se selecciona un lugar al azar para la pelea.
     this.narrador.hablar(`Os contare una pequeña batalla que succedio hace un par de decadas en las ${this.escenario.nombreLugar}, ${this.escenario.tipoDescripcion}...`);
     this.narrador.hablar(`Primero os hablare de uno de los luchadores de esta batalla, este es un ${this.bueno.description} `);
+    document.write(`<img src="Imagenes/${(this.bueno.nombre).toLowerCase()}.gif" />`);
     this.narrador.hablar(`Ahora del otro "luchador", este es un ${this.malo.description} `);
+    document.write(`<img src="Imagenes/${(this.malo.nombre).toLowerCase()}.gif" />`);
     this.narrador.hablar(`Por azares del destino el ${this.bueno.nombre} y el ${this.malo.nombre} se habian cruzado en el camino de los objetivos de ambos, y ninguno de los dos estaba dispuesto a marcharse`);
     this.malo.hablar(`Malditos ${this.bueno.nombre} siempre estais molestando, sois peores que moscas`);
     this.bueno.hablar(`Asquerosos ${this.malo.nombre}, deberiais mejorar mas vuestra inteligencia y dejaar de quejaros de nuestra clase`);
@@ -93,6 +95,7 @@ class Pelicula
     {
       this.malo.hablar(`JAJAJAJA CLARO QUE IBA A GANAR`);
       this.narrador.hablar(`Dijo con orgullo el ${this.malo.nombre}`);
+      document.write(`<img src="Imagenes/${(this.malo.nombre).toLowerCase()}.gif" />`);
     }
     else
     {
@@ -100,6 +103,7 @@ class Pelicula
       {
         this.bueno.hablar(`No pudiste con mi fuerza`);
         this.narrador.hablar(`Dijo con orgullo el ${this.bueno.nombre}`);
+        document.write(`<img src="Imagenes/${(this.bueno.nombre).toLowerCase()}.gif" />`);
       }
       else
       {
@@ -207,7 +211,7 @@ class Mago extends Personaje
       this.suerteAtaque = Escenario.suerte(2,0);
 
       document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
-      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}> ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
       document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`);
 
       personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
@@ -237,6 +241,7 @@ class Mago extends Personaje
 
     eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
     {
+      console.log(suerteMovimiento);
       if (suerteMovimiento<=5 && suerteMovimiento>=0)
       {
         this.atacar(personaje);
@@ -289,7 +294,7 @@ class Caballero extends Personaje
       this.suerteAtaque = Escenario.suerte(2,0);
 
       document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
-      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}> ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
       document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
 
       personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
@@ -370,7 +375,7 @@ class Cazador extends Personaje
       this.suerteAtaque = Escenario.suerte(2,0);
 
       document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
-      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}> ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
       document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
 
       personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
@@ -451,7 +456,7 @@ class Dragon extends Personaje
       this.suerteAtaque = Escenario.suerte(2,0);
 
       document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
-      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}> ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
       document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
 
       personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
@@ -533,7 +538,7 @@ class Orco extends Personaje
       this.suerteAtaque = Escenario.suerte(2,0);
 
       document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
-      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}> ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
       document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
 
       personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
@@ -614,7 +619,7 @@ class Demonio extends Personaje
       this.suerteAtaque = Escenario.suerte(2,0);
 
       document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
-      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}> ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
       document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
 
       personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);

@@ -1,18 +1,26 @@
 body
 {
-  margin: 0px 300px;
-  text-align: justify;
   background-color: #cea67e;
 }
-h1
+
+main
 {
-  font-weight: bold;
-  font-family: Comic Sans MS;
+  margin: 50px 250px;
+  padding: 70px;
+  text-align: justify;
+  background-color: #f2e1d0;
+  border-radius: 20px;
 }
-h2
+
+h1 ,h2
 {
-  font-weight: bold;
-  font-family: Comic Sans MS;
+  font-family: fantasy;
+  text-align: center;
+}
+
+main img
+{
+  width: 100%;
 }
 .narrador
 {

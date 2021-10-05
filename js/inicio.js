@@ -459,6 +459,11 @@ class Dragon extends Personaje
 
     }
 
+    hablar(texto)
+    {
+        document.write(`<p class=${this.nombre}> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+    }
+
     defender()
     {
       document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡DEFENSA! </p>`);

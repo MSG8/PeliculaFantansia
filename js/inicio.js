@@ -81,29 +81,22 @@ class Pelicula
     this.malo.hablar(`Como si la opinion de un minusculo ${this.bueno.nombre} me importara, ¡JAJAJA!`);
     this.narrador.hablar(`Rio el ${this.malo.nombre} de manera grave y resonante`);
     this.bueno.hablar(`No me asustas ${this.malo.nombre}`);
-    this.bueno.atacar(this.malo);
+    this.malo.hablar(`Entonces peleemos pequeñajos`);
+    document.write(`<h2> BATALLA </h2>`);
+    while (this.bueno.vida > 0 && this.bueno.vida > 0)
+    {
+      this.bueno.eventos(this.malo);
+      this.malo.eventos(this.bueno);
+
+      this.narrador.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
+      this.narrador.hablar(`Tu clase es ${this.malo.nombre} y su descripcion es -> ${this.malo.description}, sus puntos de vida son ${this.malo.vida}`);
+
+    }
 
 
-    this.bueno.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
-
-    this.malo.hablar(`Tu clase es ${this.malo.nombre} y su descripcion es -> ${this.malo.description}, sus puntos de vida son ${this.malo.vida}`);
 
 
-    // document.write(`<p> ${this.pueblo.nombre} era un pueblo ${this.pueblo.descripcion}, en el pasado fue un pueblo tranquilo y prospero pero eso cambio tras el paso del Sendero de las Lagrimas</p>`);
-    // this.narrador.hablar(` Era otra calurosa mañana, se escuchaba el sonido de la musica de la taberna de fondo mientras ${this.paco.nombre}${this.paco.descripcionPersonaje} preparaba su caballo.`);
-    // this.paco.hablar(`¿Que haces esta tarde ${this.maria.nombre}?.`);
-    // this.narrador.hablar(`Pregunto ${this.paco.nombre} mientras acababa de preparar su caballo.`);
-    // this.maria.hablar(` La verdad que no tengo nada que hacer ${this.paco.nombre}`);
-    // this.narrador.hablar(`${this.maria.nombre} es una ${this.maria.descripcionPersonaje}. Miro con cursiosidad a su compañero, le extrañaba que este le preguntase sobre sus planes ya que ${this.paco.nombre} siempre estaba demasiado ocupado`);
-    // this.maria.hablar(` ¿Por que me preguntas tu algo asi..?`);
-    // this.paco.hablar(` Porque.... necesito tu ayuda.`);
-    // this.narrador.hablar(` ${this.paco.nombre} sonrio mientras sacaba un pequeño trozo de oro de la mochila de su caballo.`);
-    // this.narrador.hablar(`La rosto de ${this.maria.nombre} cambio de golpe al tiempo que el reflejo del oro aparecia frente su vista.`);
-    // this.maria.hablar(` ¡¿DE DONDE SACASTE ESO?!`);
-    // this.narrador.hablar(`La rosto de ${this.maria.nombre} cambio de golpe al tiempo que el reflejo del oro aparecia frente su vista.`);
-    // this.narrador.hablar(`${this.paco.nombre} devolvio el oro a su mochila mientras se avalanza a silenciar a su amiga.`);
-    // this.maria.hablar(` ${this.maria.nombre}, quedamos en 1 hora detras de la taberna para ir a recoger todo el oro que podamos, asi que rapido ve a preparar tu caballo`);
-    // this.narrador.hablar(`${this.maria.nombre} simplemente asento y salio corriendo a preparar su caballo.`);
+
   }
 
 
@@ -115,6 +108,7 @@ class Escenario
   {
     this.nombreLugar = nombreLugar;
     this.tipoDescripcion = tipoDescripcion;
+    document.write(`<img src=${this.nombreLugar}`);
   }
 
   lugar()
@@ -140,6 +134,8 @@ class Escenario
     this.nombreLugar=this.lugar[this.suerte];
 
     this.tipoDescripcion=this.descripcion[this.suerte];
+
+    // document.getElementsByTagName('main')[0].style.backgroundImage = `url(fondo${this.suerte})`;
   }
 
   static suerte(max=0,min=0)
@@ -192,16 +188,16 @@ class Mago extends Personaje
     {
       this.distintosAtaques=
       [
-        ['bola de fuego', 20, 'PUSHH'],
-        ['misiles arcanos', 25, 'PIN PIN PIN'],
-        ['rayo helador',10, 'SHHHHH']
+        ['bola de fuego', 20, 'PUSHH', 'fuego'],
+        ['misiles arcanos', 25, 'PIN PIN PIN', 'misiles'],
+        ['rayo helador',10, 'SHHHHH', 'hielo']
       ];
 
       this.suerteAtaque = Escenario.suerte(2,0);
 
-      document.write(`<p class="mago"> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
-      document.write(`<p class="efecto">  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
-      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`);
 
       personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
 
@@ -210,6 +206,41 @@ class Mago extends Personaje
     hablar(texto)
     {
         document.write(`<p class="mago"> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+    }
+
+    defender()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡DEFENSA! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se defendio, aguanta 10pto mas de ataque </p>`)
+
+      this.vida = this.vida + 10;
+    }
+
+    curar()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡CURACION! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se curo, recuperando 30pto mas de vida </p>`)
+
+      this.vida = this.vida + 30;
+    }
+
+    eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
+    {
+      if (suerteMovimiento<=5 && suerteMovimiento>=0)
+      {
+        this.atacar(personaje);
+      }
+
+      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      {
+        this.defender();
+      }
+
+      if(suerteMovimiento==9)
+      {
+        this.curar();
+      }
+
     }
 }
 
@@ -235,9 +266,63 @@ class Caballero extends Personaje
       return this.descripcionClase[Escenario.suerte(2,0)];
     }
 
+    atacar(personaje)
+    {
+      this.distintosAtaques=
+      [
+        ['espada sagrada', 20, 'FUN', 'brillo'],
+        ['filo retumbante', 25, 'FUSHSHAS', 'fuerza'],
+        ['embate poderosos',10, 'FLINN', 'fuerza']
+      ];
+
+      this.suerteAtaque = Escenario.suerte(2,0);
+
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
+
+      personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
+
+    }
+
     hablar(texto)
     {
-        document.write(`<p class="caballero"> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+        document.write(`<p class=${this.nombre}> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+    }
+
+    defender()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡DEFENSA! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se defendio, aguanta 10pto mas de ataque </p>`)
+
+      this.vida = this.vida + 10;
+    }
+
+    curar()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡CURACION! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se curo, recuperando 30pto mas de vida </p>`)
+
+      this.vida = this.vida + 30;
+    }
+
+    eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
+    {
+      if (suerteMovimiento<=5 && suerteMovimiento>=0)
+      {
+        this.atacar(personaje);
+      }
+
+      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      {
+        this.defender();
+      }
+
+      if(suerteMovimiento==9)
+      {
+        this.curar();
+      }
+
     }
 }
 
@@ -262,9 +347,63 @@ class Cazador extends Personaje
       return this.descripcionClase[Escenario.suerte(2,0)];
     }
 
+    atacar(personaje)
+    {
+      this.distintosAtaques=
+      [
+        ['tramapa mortal', 20, 'FAS', 'fuerza'],
+        ['emboscada', 25, '..... TRACK', 'sigiloso'],
+        ['disparo certero',10, 'FLINN', 'fuerza']
+      ];
+
+      this.suerteAtaque = Escenario.suerte(2,0);
+
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
+
+      personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
+
+    }
+
     hablar(texto)
     {
-        document.write(`<p class="cazador"> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+        document.write(`<p class=${this.nombre}> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+    }
+
+    defender()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡DEFENSA! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se defendio, aguanta 10pto mas de ataque </p>`)
+
+      this.vida = this.vida + 10;
+    }
+
+    curar()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡CURACION! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se curo, recuperando 30pto mas de vida </p>`)
+
+      this.vida = this.vida + 30;
+    }
+
+    eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
+    {
+      if (suerteMovimiento<=5 && suerteMovimiento>=0)
+      {
+        this.atacar(personaje);
+      }
+
+      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      {
+        this.defender();
+      }
+
+      if(suerteMovimiento==9)
+      {
+        this.curar();
+      }
+
     }
 }
 
@@ -289,9 +428,58 @@ class Dragon extends Personaje
       return this.descripcionClase[Escenario.suerte(2,0)];
     }
 
-    hablar(texto)
+    atacar(personaje)
     {
-        document.write(`<p class="mago"> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+      this.distintosAtaques=
+      [
+        ['garras filosas', 20, 'FAS', 'fuerza'],
+        ['llamarada', 25, 'PUSHH', 'fuego'],
+        ['golpe de cola',10, 'PUN', 'fuerza']
+      ];
+
+      this.suerteAtaque = Escenario.suerte(2,0);
+
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
+
+      personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
+
+    }
+
+    defender()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡DEFENSA! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se defendio, aguanta 10pto mas de ataque </p>`)
+
+      this.vida = this.vida + 10;
+    }
+
+    curar()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡CURACION! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se curo, recuperando 30pto mas de vida </p>`)
+
+      this.vida = this.vida + 30;
+    }
+
+    eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
+    {
+      if (suerteMovimiento<=5 && suerteMovimiento>=0)
+      {
+        this.atacar(personaje);
+      }
+
+      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      {
+        this.defender();
+      }
+
+      if(suerteMovimiento==9)
+      {
+        this.curar();
+      }
+
     }
 }
 
@@ -317,9 +505,63 @@ class Orco extends Personaje
       return this.descripcionClase[Escenario.suerte(2,0)];
     }
 
+    atacar(personaje)
+    {
+      this.distintosAtaques=
+      [
+        ['golpe atroz', 20, 'FAS', 'fuerza'],
+        ['mazazo destroza roca', 25, 'PUSHH', 'fuerza'],
+        ['golpe de mazo',10, 'PUN', 'fuerza']
+      ];
+
+      this.suerteAtaque = Escenario.suerte(2,0);
+
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
+
+      personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
+
+    }
+
     hablar(texto)
     {
-        document.write(`<p class="caballero"> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+        document.write(`<p class=${this.nombre}> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+    }
+
+    defender()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡DEFENSA! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se defendio, aguanta 10pto mas de ataque </p>`)
+
+      this.vida = this.vida + 10;
+    }
+
+    curar()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡CURACION! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se curo, recuperando 30pto mas de vida </p>`)
+
+      this.vida = this.vida + 30;
+    }
+
+    eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
+    {
+      if (suerteMovimiento<=5 && suerteMovimiento>=0)
+      {
+        this.atacar(personaje);
+      }
+
+      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      {
+        this.defender();
+      }
+
+      if(suerteMovimiento==9)
+      {
+        this.curar();
+      }
+
     }
 }
 
@@ -344,17 +586,63 @@ class Demonio extends Personaje
       return this.descripcionClase[Escenario.suerte(2,0)];
     }
 
-    hablar(texto)
+    atacar(personaje)
     {
-        document.write(`<p class="cazador"> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
-    }
-}
+      this.distintosAtaques=
+      [
+        ['garras muertas', 20, 'FAS', 'fuerza'],
+        ['llamarada helada', 25, 'FSHH', 'hielo'],
+        ['golpe punzante',10, 'FAS', 'fuerza']
+      ];
 
-class PersonajeMalo extends Personaje
-{
+      this.suerteAtaque = Escenario.suerte(2,0);
+
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
+      document.write(`<p class=${this.distintosAtaques[this.suerteAtaque][3]}  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
+
+      personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
+
+    }
+
     hablar(texto)
     {
-        document.write(`<p class="malo"> <span class="negrita"> ${this.nombre}: </span>  ${texto} </p>`);
+        document.write(`<p class=${this.nombre}> <span class="negrita"> ${this.nombre}: </span> ${texto} </p>`);
+    }
+
+    defender()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡DEFENSA! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se defendio, aguanta 10pto mas de ataque </p>`)
+
+      this.vida = this.vida + 10;
+    }
+
+    curar()
+    {
+      document.write(`<p class=${this.nombre}> <span class="negrita">${this.nombre}:</span>  ¡CURACION! </p>`);
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} se curo, recuperando 30pto mas de vida </p>`)
+
+      this.vida = this.vida + 30;
+    }
+
+    eventos(personaje, suerteMovimiento = Escenario.suerte(9,0))
+    {
+      if (suerteMovimiento<=5 && suerteMovimiento>=0)
+      {
+        this.atacar(personaje);
+      }
+
+      if(suerteMovimiento<=6 && suerteMovimiento>=8)
+      {
+        this.defender();
+      }
+
+      if(suerteMovimiento==9)
+      {
+        this.curar();
+      }
+
     }
 }
 

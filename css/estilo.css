@@ -1,0 +1,75 @@
+body
+{
+  margin: 0px 300px;
+  text-align: justify;
+  background-color: #cea67e;
+}
+h1
+{
+  font-weight: bold;
+  font-family: Comic Sans MS;
+}
+h2
+{
+  font-weight: bold;
+  font-family: Comic Sans MS;
+}
+.narrador
+{
+  font-style: italic;
+  color: #6a6a62;
+  font-size: 18px;
+}
+.negrita
+{
+  font-weight: bold;
+}
+.MAGO, .mago
+{
+  color: #0000ff;
+}
+
+.caballero, .CABALLERO
+{
+  color: #613000;
+}
+.cazador, .CAZADOR
+{
+  color: #336600;
+}
+.ORCO, .orco
+{
+  color: #86b300;
+}
+.DEMONIO, .demonio
+{
+  color: #660066;
+}
+.dragon, .DRAGON
+{
+  color: #cc3300;
+}
+.fuego
+{
+  color: #ff6600;
+}
+.misiles
+{
+  color: #8c15b7;
+}
+.hielo
+{
+  color: #00ccff;
+}
+.brillo
+{
+  color: white;
+}
+.fuerza
+{
+  color: #4d2600;
+}
+.sigiloso
+{
+  color: #666699;
+}

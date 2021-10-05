@@ -45,7 +45,7 @@ class Pelicula
   {
     do
     {
-      this.eleccionMalo = (prompt('Buenas jugador, que clase de enemigo quiere usted ser (DRAGON/ORCO/DEMONIO): ').replace(/ /g, "")).toUpperCase();//CAMBIAMOS LOS ESPACIOS EN BLANCO Y LO PONEMOS TODO MAYUSCULAS, ASI NO DARA FALLO AL ENTRAR LOS DATOS
+      this.eleccionMalo = (prompt('Buenas jugador, que clase de enemigo quiere usted para pelear (DRAGON/ORCO/DEMONIO): ').replace(/ /g, "")).toUpperCase();//CAMBIAMOS LOS ESPACIOS EN BLANCO Y LO PONEMOS TODO MAYUSCULAS, ASI NO DARA FALLO AL ENTRAR LOS DATOS
       if (this.eleccionMalo != 'DRAGON' && this.eleccionMalo != 'ORCO' && this.eleccionMalo != 'DEMONIO')
       {
         alert('Usted fallo en la entrada de datos');
@@ -63,7 +63,7 @@ class Pelicula
         this.malo = new Demonio();
         break;
       default:
-        alert('Ha ocurrido un error al instanciar al personaje bueno');
+        alert('Ha ocurrido un error al instanciar al personaje malo');
     }
   }
 
@@ -81,7 +81,7 @@ class Pelicula
     this.malo.hablar(`Como si la opinion de un minusculo ${this.bueno.nombre} me importara, ¡JAJAJA!`);
     this.narrador.hablar(`Rio el ${this.malo.nombre} de manera grave y resonante`);
     this.bueno.hablar(`No me asustas ${this.malo.nombre}`);
-
+    this.bueno.atacar(this.malo);
 
 
     this.bueno.hablar(`Tu clase es ${this.bueno.nombre} y su descripcion es -> ${this.bueno.description}, sus puntos de vida son ${this.bueno.vida}`);
@@ -186,6 +186,25 @@ class Mago extends Personaje
       ];
 
       return this.descripcionClase[Escenario.suerte(2,0)];
+    }
+
+    atacar(personaje)
+    {
+      this.distintosAtaques=
+      [
+        ['bola de fuego', 20, 'PUSHH'],
+        ['misiles arcanos', 25, 'PIN PIN PIN'],
+        ['rayo helador',10, 'SHHHHH']
+      ];
+
+      this.suerteAtaque = Escenario.suerte(2,0);
+
+      document.write(`<p class="mago"> <span class="negrita">${this.nombre}:</span>  ¡${this.distintosAtaques[this.suerteAtaque][0]}! </p>`);
+      document.write(`<p class="efecto">  ${this.distintosAtaques[this.suerteAtaque][2]} </p>`)
+      document.write(`<p class="narrador"> <span class="negrita">Narrador:</span>  El ${this.nombre} lanzo su ataque ${this.distintosAtaques[this.suerteAtaque][0]} y daño a ${personaje.nombre} quitandole ${this.distintosAtaques[this.suerteAtaque][1]}  </p>`)
+
+      personaje.vida = personaje.vida - (this.distintosAtaques[this.suerteAtaque][1]);
+
     }
 
     hablar(texto)

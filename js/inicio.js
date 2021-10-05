@@ -120,7 +120,6 @@ class Escenario
   {
     this.nombreLugar = nombreLugar;
     this.tipoDescripcion = tipoDescripcion;
-    document.write(`<img src=${this.nombreLugar}`);
   }
 
   lugar()

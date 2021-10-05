@@ -92,11 +92,6 @@ class Pelicula
       this.narrador.hablar(`Tu clase es ${this.malo.nombre} y su descripcion es -> ${this.malo.description}, sus puntos de vida son ${this.malo.vida}`);
 
     }
-
-
-
-
-
   }
 
 
@@ -646,4 +641,4 @@ class Demonio extends Personaje
     }
 }
 
-new Pelicula(); // llamo al constructor de la clase pelicula
+let peli = new Pelicula(); // llamo al constructor de la clase pelicula
